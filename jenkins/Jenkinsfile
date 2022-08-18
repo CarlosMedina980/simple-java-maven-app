@@ -23,7 +23,7 @@ pipeline {
         }
         stage('This pipeline run correctly') {
             steps {
-                echo 'This is to show the pipeline is listening to commits on the repo in master branch'
+                echo 'This is the pipeline updated'
             }
         }
     }
