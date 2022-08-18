@@ -21,9 +21,9 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-        stage('Complete') {
+        stage('This pipeline run correctly') {
             steps {
-                echo 'Completed Succesfully'
+                echo 'This is to show the pipeline is listening to commits on the repo in master branch'
             }
         }
     }
