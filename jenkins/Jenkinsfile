@@ -20,11 +20,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
-        }
-        stage('This pipeline run correctly') {
-            steps {
-                echo 'This is the pipeline updated'
-            }
-        }
+        }        
     }
 }
