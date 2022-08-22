@@ -1,5 +1,14 @@
 pipeline {
     agent any
+    parameters {
+        booleanParam(defaultValue: false, description: 'Enable Service?', name: 'myBoolean')
+        choice(choices: ['QA', 'TEST', 'DEV', 'PRE-PROD', 'PROD'], description: 'Environment on which we will deploy?', name: 'deployEnvironment')
+    }
+    environment {
+        def myString = 'Hello World'
+        def myNumber = 10
+        def myBool = true
+    }
     stages {
         stage('Build') {
             steps {
@@ -21,5 +30,28 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }        
+        stage('DemoParameters') {
+            steps {
+                echo "booleanParam is set to: ${params.myBoolean}"
+                echo "booleanParam is set to: ${params.deployEnvironment}"
+            }
+        }
+        stage('DemoVariables') {
+            steps {
+                echo "myString is set to: ${myString }"
+                echo "myNumber is set to: ${myNumber }"
+                echo "myBool is set to: ${myBool}"
+            }
+        }
+        stage('DemoJenkinsVariables') {
+            steps {
+                echo "Build number is: ${env.BUILD_NUMBER}"
+                echo "Build Id is : ${env.BUILD_ID}"
+                echo "Build URL is : ${env.BUILD_URL}"
+                echo "Last Commit is: ${env.GIT_COMMIT}"
+                echo "Repo Url is : ${env.GIT_URL}"
+                echo "Branch is is : ${env.GIT_BRANCH}"
+            }
+        }
     }
 }
