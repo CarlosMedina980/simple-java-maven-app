@@ -56,6 +56,7 @@ pipeline {
         stage('Build Remote Papiline') {
             steps {
                 build 'My First Job'
+                echo "Already Installed Maven"
             }
         }
     }
