@@ -53,5 +53,10 @@ pipeline {
                 echo "Branch is is : ${env.GIT_BRANCH}"
             }
         }
+        stage('Build Remote Papiline') {
+            steps {
+                build 'My First Job'
+            }
+        }
     }
 }
